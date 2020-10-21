@@ -1,17 +1,22 @@
 // Pari o dispari: scrivere una (o più di una) funzione per simulare il gioco di pari e dispari tra l'utente e il computer. L'utente sceglie un numero tra 1 e 5 e sceglie "pari" o "dispari". Il computer genera un secondo numero casuale tra 1 e 5. Per vedere chi dei due vince, si deve fare la somma dei numeri dell'utente e del computer e stabilire se il risultato è pari o dispari. Ad esempio, l'utente inserisce il numero 1 e indica come scelta "pari"; il computer genera casualmente il numero 3. In questo caso ha vinto l'utente (perché 1+3 = 4, che è pari)
 
 
-//creo una funzione per definire se pari o dispari
-// function isItEven(number) {
-//     if (number % 2 == 0){
-//         return true;
-//     } else {
-//         return false;
-//     }
+// creo una funzione per definire se pari o dispari
+function isItEven(number) {
+    if (number % 2 == 0){
+        return "pari";
+    } else {
+        return "dispari";
+    }
+}
+
+// function isEven(num) {
+//     return num % 2 == 0;
 // }
 
-function isEven(num) {
-    return num % 2 == 0;
+function sumOfNumbers(num1, num2) {
+    somma = num1 + num2;
+    return somma;
 }
 
 //chiedo all' utente un numero da 1 a 5
@@ -21,7 +26,7 @@ while (selectedNumber <= 0 || selectedNumber > 5 || isNaN(selectedNumber)) {
     selectedNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
 }
 console.log("your number is " + selectedNumber);
-
+//creo array per la scelta dell'utente
 var selection  = ["pari", "dispari"]
 
 //chiedo all'utente se l'esito fra i due numeri  sarà pari o dispari
@@ -34,3 +39,18 @@ console.log("you choose " + esitoTotale);
 //genero un numero per il bot
 var botNumber = Math.floor((Math.random() * 5) + 1);
 console.log("bot's number is : " + botNumber);
+
+//faccio somma numero utente e numero bot
+var totSum = sumOfNumbers(selectedNumber, botNumber);
+console.log("the sum between your number and the bot number is " + totSum);
+
+var result = isItEven(totSum);
+console.log(result);
+
+//definisco se la somma finale è pari o dispari
+if (result == esitoTotale) {
+    console.log("You Won");
+
+} else {
+    console.log("You lose, the winner is the bot");
+}
